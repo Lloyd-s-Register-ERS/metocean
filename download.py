@@ -1,15 +1,17 @@
+# To download metocean time series
+# Matthew Zhang
+# 07 Nov 2019
+
 
 # varList = ['100m_u_component_of_wind', \
 #               '100m_v_component_of_wind', \
 #              '10m_u_component_of_wind', \
 #               '10m_v_component_of_wind'
 
-
 import cdsapi
 import sys
 
-
-if __name__ == "__main__":
+def ERA5(year_start, year_end, varList, output):
     
     c = cdsapi.Client()
 
@@ -19,7 +21,9 @@ if __name__ == "__main__":
                'significant_height_of_combined_wind_waves_and_swell']
 
     year_start = int(sys.argv[1])
+
     if len(sys.argv)>2:
+
         year_end = int(sys.argv[2])
                  
     for year in range(year_start,year_end+1):
